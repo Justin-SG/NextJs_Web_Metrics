@@ -3,6 +3,8 @@ import HeaderComponent from "./HeaderComponent";
 import PostComponent from "./PostComponent";
 import ImageCarousel from "./ImageCarousel";
 
+export const revalidate = 60;
+
 export default async function NewsPage() {
   const posts = await prisma.post.findMany();
 

@@ -9,6 +9,7 @@ import LandingComponent from './LandingComponent';
 import HeaderComponent from './HeaderComponent';
 import FooterComponent from './FooterComponent';
 
+export const revalidate = 60;
 
 export default function LandingPage() {
     return (

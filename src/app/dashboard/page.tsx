@@ -4,6 +4,8 @@ import Budget_list from './BudgetList';
 import Entries_list from './EntriesList';
 import NewTransaction from "./NewTransaction";
 
+export const revalidate = 60;
+
 export default async function DashboardPage() {
 
   const transactions = await prisma.transaction.findMany();
