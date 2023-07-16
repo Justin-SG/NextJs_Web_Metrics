@@ -3,8 +3,11 @@ import Disposable_income from './DisposableIncome';
 import Budget_list from './BudgetList';
 import Entries_list from './EntriesList';
 import NewTransaction from "./NewTransaction";
+import { headers } from "next/headers";
 
 export default async function DashboardPage() {
+
+  headers();
 
   const transactions = await prisma.transaction.findMany();
   const budgets = await prisma.budget.findMany();

@@ -8,9 +8,13 @@ import CompaniesComponent from './CompaniesComponent';
 import LandingComponent from './LandingComponent';
 import HeaderComponent from './HeaderComponent';
 import FooterComponent from './FooterComponent';
+import { headers } from "next/headers";
 
 
 export default function LandingPage() {
+
+    headers();
+
     return (
         <>
             <HeaderComponent />

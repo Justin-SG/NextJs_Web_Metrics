@@ -2,8 +2,12 @@ import prisma from "@/lib/prismaClient";
 import HeaderComponent from "./HeaderComponent";
 import PostComponent from "./PostComponent";
 import ImageCarousel from "./ImageCarousel";
+import { headers } from "next/headers";
 
 export default async function NewsPage() {
+
+  headers();
+
   const posts = await prisma.post.findMany();
 
   return (
