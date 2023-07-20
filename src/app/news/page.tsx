@@ -2,13 +2,15 @@ import prisma from "@/lib/prismaClient";
 import HeaderComponent from "./HeaderComponent";
 import PostComponent from "./PostComponent";
 import ImageCarousel from "./ImageCarousel";
+import Loading from "./loading"
 import { headers } from "next/headers";
+import { Suspense } from 'react'
 
 export default async function NewsPage() {
 
   headers();
 
-  const posts = await prisma.post.findMany();
+  const posts = prisma.post.findMany();
 
   return (
     <>
@@ -38,9 +40,12 @@ export default async function NewsPage() {
                   </h2>
                 </div>
                 <div className="flex flex-row flex-wrap -mx-3">
-                  {posts.slice(0, 6).map(function (post, i) {
-                    return <PostComponent key={i} post={post} />;
-                  })}
+
+                  <Suspense fallback={<Loading />}>
+                    {(await posts).slice(0, 6).map(function (post, i) {
+                      return <PostComponent key={i} post={post} />;
+                    })}
+                  </Suspense>
                 </div>
               </div>
               <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pt-14 lg:pb-8 order-first lg:order-last">
@@ -76,7 +81,9 @@ export default async function NewsPage() {
                       American
                     </h2>
                   </div>
-                  {<ImageCarousel posts={posts.slice(18, 24)} />}
+                  <Suspense fallback={<Loading />}>
+                    {<ImageCarousel posts={(await posts).slice(18, 24)} />}
+                  </Suspense>
                 </div>
               </div>
             </div>
@@ -94,9 +101,11 @@ export default async function NewsPage() {
                   </h2>
                 </div>
                 <div className="flex flex-row flex-wrap -mx-3">
-                  {posts.slice(6, 12).map(function (post, i) {
-                    return <PostComponent key={i} post={post} />;
-                  })}
+                  <Suspense fallback={<Loading />}>
+                    {(await posts).slice(6, 12).map(function (post, i) {
+                      return <PostComponent key={i} post={post} />;
+                    })}
+                  </Suspense>
                 </div>
               </div>
             </div>
@@ -144,9 +153,11 @@ export default async function NewsPage() {
                       </div>
                     </div>
                   </div>
-                  {posts.slice(12, 18).map(function (post, i) {
-                    return <PostComponent key={i} post={post} />;
-                  })}
+                  <Suspense fallback={<Loading />}>
+                    {(await posts).slice(12, 18).map(function (post, i) {
+                      return <PostComponent key={i} post={post} />;
+                    })}
+                  </Suspense>
                 </div>
               </div>
               <div className="flex-shrink max-w-full w-full lg:w-1/3 lg:pr-8 lg:pt-14 lg:pb-8 order-first">

@@ -1,17 +1,9 @@
 import FormattedNumber from './FormattedNumber';
+import prisma from "@/lib/prismaClient";
 
-interface Props {
-	budgets: Budget[]
-}
-
-interface Budget {
-	limit: number;
-	spent: number;
-	name: string;
-	percentage: number;
-}
-
-export default function BudgetList({ budgets }: Props) {
+export default async function BudgetList() {
+	await new Promise((resolve) => setTimeout(resolve, 5000));
+	const budgets = await prisma.budget.findMany();
 	return (
 		<div className="px-4">
 			{budgets.map(function (budget, index) {

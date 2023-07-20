@@ -1,3 +1,5 @@
+"use client"
+
 import FormattedNumber from './FormattedNumber';
 import type { DisplayableTransaction } from './booking';
 
@@ -8,7 +10,7 @@ interface Props {
 
 export default function TransactionDetail({ transaction }: Props) {
   return (
-    <>
+    <button className="contents" onClick={() => alert('clicked on something')}>
       <div className="grid cursor-pointer grid-cols-[minmax(0,4rem)_3fr_3fr_2fr] grid-rows-2">
         <div className="xl:text-lg-custom row-span-2 text-base">
           {transaction.date.toLocaleDateString("de-DE", {
@@ -34,6 +36,6 @@ export default function TransactionDetail({ transaction }: Props) {
         </div>
       </div>
       <hr className="mb-2" />
-    </>
+    </button>
   );
 }

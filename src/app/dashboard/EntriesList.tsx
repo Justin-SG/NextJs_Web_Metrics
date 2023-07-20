@@ -1,21 +1,15 @@
-"use client"
-
-import type { DisplayableTransaction } from './booking';
 import TransactionsDetail from './TransactionDetail';
+import prisma from "@/lib/prismaClient";
 
-interface Props {
-	bookings: DisplayableTransaction[]
-}
-
-export default function EntriesList({ bookings }: Props) {
+export default async function EntriesList() {
+	await new Promise((resolve) => setTimeout(resolve, 5000));
+	const transactions = await prisma.transaction.findMany();
 	return (
 
 		<div className="px-4">
-			{bookings.map(function (booking, index) {
+			{transactions.map(function (booking, index) {
 				return (
-					<button key={index} className="contents" onClick={() => alert('clicked on something')}>
-						<TransactionsDetail transaction={booking} />
-					</button>
+					<TransactionsDetail key={index} transaction={booking} />
 				);
 			})}
 		</div>
