@@ -18,9 +18,9 @@ export default function DisposableIncome() {
 						viewBox="0 0 24 24"
 						xmlns="http://www.w3.org/2000/svg"
 					><path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth="2"
 							d="M 7 6 h 13 M 4 12 h 16 m -7 6 h 7"
 						/>
 					</svg>
