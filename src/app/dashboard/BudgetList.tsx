@@ -2,7 +2,6 @@ import FormattedNumber from './FormattedNumber';
 import prisma from "@/lib/prismaClient";
 
 export default async function BudgetList() {
-	await new Promise((resolve) => setTimeout(resolve, 5000));
 	const budgets = await prisma.budget.findMany();
 	return (
 		<div className="px-4">

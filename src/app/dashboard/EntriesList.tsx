@@ -2,7 +2,6 @@ import TransactionsDetail from './TransactionDetail';
 import prisma from "@/lib/prismaClient";
 
 export default async function EntriesList() {
-	await new Promise((resolve) => setTimeout(resolve, 5000));
 	const transactions = await prisma.transaction.findMany();
 	return (
 
